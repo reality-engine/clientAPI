@@ -1,0 +1,78 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "setuptools_scm>=3.4", "setuptools-pipfile>=0.7"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reapi"
+description = "Reality Engine API"
+requires-python = ">=3.11"
+authors = [
+	{name = "sesdaile", email = "105192593+sesdaile@users.noreply.github.com"},
+]
+readme = "README.md"
+license = {file = "LICENSE"}
+dynamic = ["version", "dependencies", "optional-dependencies"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+]
+
+# [project.entry-points."reapi.plugin"]
+# default = "reapi.plugin:DefaultPlugin"
+
+# [project.scripts]
+# reapi = "reapi.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/reality-engine/reapi"
+Documentation = "https://reality-engine.github.io/reapi/"
+Source = "https://github.com/reality-engine/reapi"
+Tracker = "https://github.com/reality-engine/reapi/issues"
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+parallel = true
+source = ["reapi", "tests"]
+
+[tool.coverage.report]
+show_missing = true
+precision = 2
+
+[tool.isort]
+profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "-p no:warnings --cov --cov-report term-missing"
+
+[tool.setuptools]
+zip-safe = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+
+[tool.setuptools-pipfile]
+extras = 3
+
+[tool.tox]
+legacy_tox_ini = '''
+[tox]
+envlist = lint,py
+isolated_build = True
+
+[testenv:lint]
+commands = pre-commit run -a
+
+[testenv]
+extras = dev
+commands = pytest --cov-report=xml --cov-fail-under=100
+'''

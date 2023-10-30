@@ -1,0 +1,37 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+flake8 = "*"
+flake8-bugbear = "*"
+black = "*"
+build = "*"
+isort = "*"
+autoflake = "*"
+pre-commit = "*"
+pre-commit-hooks = "*"
+mkdocs-material = "*"
+reapi = {editable = true, path = "."}
+websocket-client = "*"
+python-dispatch = "*"
+keyring = "*"
+
+[packages]
+fastapi = "*"
+websockets = "*"
+httpx = "*"
+uvicorn = "*"
+
+[scripts]
+setup = "pipenv sync --dev"
+test = "pytest"
+lint = "pre-commit run -a"
+docs = "mkdocs serve"
+build = "python -m build"
+update = "bash -c 'pipenv update --dev && pre-commit autoupdate'"
+publish = "mkdocs gh-deploy --force"
+clean = "git clean -fX ."

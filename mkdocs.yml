@@ -1,0 +1,36 @@
+site_name: reapi
+site_url: https://asyncon.github.io/reapi/
+site_author: asyncon
+site_description: Reality Engine API
+
+repo_name: asyncon/reapi
+repo_url: https://github.com/asyncon/reapi
+edit_uri: ""
+
+copyright: Copyright &copy; 2023 asyncon
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: orange
+      media: "(prefers-color-scheme: light)"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep orange
+      accent: blue
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+markdown_extensions:
+  - meta
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
